@@ -1,5 +1,5 @@
-BREAKPAD_SRCDIR := stackwalk/src
-BREAKPAD_OBJDIR := stackwalk
+BREAKPAD_SRCDIR := build/breakpad/src
+BREAKPAD_OBJDIR := build/breakpad
 BREAKPAD_LIBS := \
   $(BREAKPAD_OBJDIR)/lib/libbreakpad.a \
   $(BREAKPAD_OBJDIR)/lib/libdisasm.a \
@@ -14,7 +14,7 @@ BINS := stackwalker dumplookup get-minidump-instructions
 all: breakpad $(BINS)
 
 breakpad:
-	./build-breakpad.sh
+	SKIP_TAR=1 ./build-breakpad.sh
 
 stackwalker_OBJS := \
   json_reader.o \
